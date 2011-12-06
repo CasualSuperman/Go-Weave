@@ -29,6 +29,6 @@ func NewAccount(email string) Account {
 	return Account{name}
 }
 
-func (a Account) String() string {
+func (a Account) Hash() string {
 	return a.username
 }

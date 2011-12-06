@@ -16,8 +16,8 @@ func TestNewAccount(t *testing.T) {
 	for _, user := range data {
 		acct := NewAccount(user.Email)
 
-		if user.Hash != acct.String() {
-			t.Errorf("Expected %s, got %s.\n", user.Hash, acct.String())
+		if user.Hash != acct.Hash() {
+			t.Errorf("Expected %s, got %s.\n", user.Hash, acct.Hash())
 		}
 	}
 }
