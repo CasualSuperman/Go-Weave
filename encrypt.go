@@ -11,18 +11,18 @@ type Account struct {
 }
 
 func NewAccount(email string) Account {
-	name := strings.ToLower(email)
+	email = strings.ToLower(email)
 
-	username := make([]byte, sha1.Size)
+	buf := make([]byte, sha1.Size)
 
 	sha := sha1.New()
-	sha.Write([]byte(name))
-	username = sha.Sum(username)
+	sha.Write([]byte(email))
+	buf = sha.Sum(buf)
 
-	result := make([]byte, base32.StdEncoding.EncodedLen(len(username)))
-	base32.StdEncoding.Encode(result, username)
+	result := make([]byte, base32.StdEncoding.EncodedLen(len(buf)))
+	base32.StdEncoding.Encode(result, buf)
 
-	name = strings.ToLower(string(result[32:]))
+	name := strings.ToLower(string(result[32:]))
 
 	return Account{name}
 }
