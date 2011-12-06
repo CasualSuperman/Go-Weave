@@ -10,6 +10,7 @@ type Account struct {
 	username string
 }
 
+// Creates a new account and computes the hash of the username
 func NewAccount(email string) Account {
 	// Lowercase
 	email = strings.ToLower(email)
