@@ -5,12 +5,18 @@ import (
 )
 
 func TestNewAccount(t *testing.T) {
-	email := "john@example.com"
-	name := "kismw365lo7emoxr3ohojgpild6lph4b"
+	emails := []string{
+			"john@example.com",
+			"john@doe.com"}
+	names := []string{
+			"kismw365lo7emoxr3ohojgpild6lph4b",
+			"7wohs32cngzuqt466q3ge7indszva4of"}
 
-	acct := NewAccount(email)
+	for i, val := range emails {
+		acct := NewAccount(val)
 
-	if name != acct.String() {
-		t.Errorf("Expected %s, got %s.\n", name, acct.String())
+		if names[i] != acct.String() {
+			t.Errorf("Expected %s, got %s.\n", names[i], acct.String())
+		}
 	}
 }
